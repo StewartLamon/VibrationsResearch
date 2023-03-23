@@ -46,7 +46,7 @@ end
 d_one = lambda_1^4*(r(1) + s(1))/2;
 
 for i = 1:segments
-    d_two(i) = lambda(i)^4*(lambda(i)^4*s(i)*r(i) - 1);
+    d_two(i) = (lambda(i)^4)*((lambda(i)^4)*s(i)*r(i) - 1);
 end
 
 %Defining Beta variables
@@ -61,11 +61,11 @@ end
 
 %Defining M variables
 for i = 1:segments
-    m_one(i) = (Beta_one(i)^2 + lambda(i)^4*s(i))/Beta_one(i);
+    m_one(i) = (Beta_one(i)^2 + (lambda(i)^4)*s(i))/Beta_one(i);
 end
 
 for i = 1:segments
-    m_two(i) = (-Beta_two(i)^2 + lambda(i)^4*s(i))/Beta_two(i);
+    m_two(i) = (-Beta_two(i)^2 + (lambda(i)^4)*s(i))/Beta_two(i);
 end
 
 %Defining mu
@@ -109,7 +109,7 @@ alpha=1-e(segments);
 %Clamped boundary condition
 
 Capital_Lambda=[m_one(segments)*Beta_one(segments)*cosh(Beta_one(segments)*alpha), m_one(segments)*Beta_one(segments)*sinh(Beta_one(segments)*alpha), m_two(segments)*Beta_two(segments)*cos(Beta_two(segments)*alpha), m_two(segments)*Beta_two(segments)*sin(Beta_two(segments)*alpha);
-   (m_one(segments) - Beta_one(segments))*sinh(Beta_one(segments)*alpha), (m_one(segments) - Beta_one(segments))*cosh(Beta_one(segments)*alpha), (m_two(segments) - Beta_two(segments))*sin(Beta_two(segments)*alpha), -(m_two(segments) - Beta_two(segments))*cos(Beta_two(segments)*alpha)];
+   (m_one(segments) - Beta_one(segments))*sinh(Beta_one(segments)*alpha), (m_one(segments) - Beta_one(segments))*cosh(Beta_one(segments)*alpha), (m_two(segments) + Beta_two(segments))*sin(Beta_two(segments)*alpha), -(m_two(segments) - Beta_two(segments))*cos(Beta_two(segments)*alpha)];
 
 %Loop to define Capital Gamma
 C_Gam = Capital_Lambda;
